@@ -127,7 +127,7 @@ const formatDate = (date) =>
             <article class="post-card">
               <header class="post-header">
                 <h2>
-                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                  <a href={`/blog/${post.id.replace(/\.md$/, "")}/`}>{post.data.title}</a>
                 </h2>
 
                 <div class="post-meta">
@@ -145,7 +145,7 @@ const formatDate = (date) =>
 
               <p>{post.data.description}</p>
 
-              <a class="read-more" href={`/blog/${post.slug}/`}>
+              <a class="read-more" href={`/blog/${post.id.replace(/\.md$/, "")}/`}>
                 ... read more
               </a>
             </article>

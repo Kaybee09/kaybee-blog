@@ -1,128 +1,154 @@
 ---
 import "../styles/global.css";
+import { getCollection } from "astro:content";
 
-const recentPosts = [
-  {
-    date: "2026-06-07",
-    title: "Building My First AWS Linux Server",
-    description:
-      "My notes from provisioning a Linux server on AWS, connecting with SSH, configuring security groups, and deploying a landing page.",
-    url: "/blog/building-my-first-aws-linux-server/",
-  },
-  {
-    date: "2026-05-24",
-    title: "Bash Scripting Notes for Beginners",
-    description:
-      "Simple Bash scripting examples for automation, file handling, backups, and Linux command-line productivity.",
-    url: "/blog/bash-scripting-notes-for-beginners/",
-  },
-  {
-    date: "2026-05-12",
-    title: "Dockerizing a Full-Stack App",
-    description:
-      "How I think about Docker, containers, frontend/backend services, and preparing applications for deployment.",
-    url: "/blog/dockerizing-a-full-stack-app/",
-  },
-];
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 10);
 
 const projects = [
   {
     title: "AWS Landing Page Deployment",
     description:
-      "A Linux server provisioned on AWS with networking, SSH access, and a deployed landing page.",
+      "Provisioning a Linux server on AWS, configuring networking, SSH, and deploying a landing page.",
     url: "/projects/aws-landing-page-deployment/",
   },
   {
     title: "Linux Server Automation",
     description:
-      "Practical Bash scripts and notes for automating common Linux server tasks.",
+      "Bash scripts and practical Linux notes for automating server tasks.",
     url: "/projects/linux-server-automation/",
   },
   {
     title: "Docker + GitHub Actions App",
     description:
-      "A full-stack project using Docker, GitHub Actions, CI/CD, and cloud deployment.",
+      "A full-stack application prepared with Docker, CI/CD, and cloud deployment.",
     url: "/projects/docker-github-actions-app/",
   },
 ];
+
+const formatDate = (date) =>
+  new Date(date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Kaybee writes practical notes on cloud engineering, Linux, AWS, DevOps, Bash scripting, and real-world projects." />
+    <meta
+      name="description"
+      content="Kaybee writes about cloud engineering, Linux, AWS, DevOps, Bash scripting, and real-world projects."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Kaybee Dev — Cloud Engineering Notes</title>
+    <title>Kaybee Dev — Cloud Engineering Blog</title>
+
+    <script defer src="/theme.js"></script>
   </head>
 
   <body>
-    <main class="site-container">
-      <header class="site-header">
-        <h1>
-          <a href="/">Kaybee Dev</a>
-        </h1>
+    <main class="page">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        🌙
+      </button>
 
-        <p class="site-tagline">
+      <header class="hero">
+        <h1>Kaybee Dev</h1>
+
+        <p>
           Cloud engineering, Linux, AWS, DevOps, and real project notes.
         </p>
+
+        <div class="social-links" aria-label="Social links">
+          <a href="mailto:kaybeelateef@gmail.com" title="Email">email</a>
+          <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer" title="GitHub">github</a>
+          <a href="https://www.linkedin.com/in/kaybee/" target="_blank" rel="noreferrer" title="LinkedIn">linkedin</a>
+          <a href="https://www.tiktok.com/@YOUR_TIKTOK_USERNAME" target="_blank" rel="noreferrer" title="TikTok">tiktok</a>
+          <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" rel="noreferrer" title="Instagram">instagram</a>
+          <a href="/rss.xml" title="RSS">rss</a>
+        </div>
       </header>
 
       <hr />
 
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">home</a>
-        <a href="/blog/">blog</a>
-        <a href="/projects/">projects</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">blog</a>
+        <a href="#projects">projects</a>
         <a href="/about/">about</a>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer">github</a>
-        <a href="https://www.linkedin.com/in/kaybee/" target="_blank" rel="noreferrer">linkedin</a>
+        <a href="/resume/">resume</a>
       </nav>
 
-      <section class="intro-section">
-        <h2>Hello.</h2>
-
+      <section class="intro">
         <p>
-          I write practical notes about my journey into cloud engineering,
-          Linux administration, AWS, Bash scripting, Docker, CI/CD, and backend
-          projects.
-        </p>
-
-        <p>
-          This website is where I document what I learn, what I build, and the
-          mistakes I fix along the way.
+          I use this site to document what I am learning and building as I grow
+          in cloud engineering. You will find notes on Linux, AWS, Bash,
+          Docker, CI/CD, and real projects.
         </p>
       </section>
 
-      <section class="content-section">
-        <div class="section-heading">
-          <h2>Recent posts</h2>
-          <a href="/blog/">all posts</a>
-        </div>
+      <section class="posts">
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <article class="post-card">
+              <header class="post-header">
+                <h2>
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h2>
 
-        <div class="post-list">
-          {recentPosts.map((post) => (
-            <article class="post-item">
-              <time datetime={post.date}>{post.date}</time>
+                <div class="post-meta">
+                  <span>{formatDate(post.data.pubDate)}</span>
 
-              <div>
-                <h3>
-                  <a href={post.url}>{post.title}</a>
-                </h3>
+                  {post.data.tags && (
+                    <div class="tags">
+                      {post.data.tags.map((tag) => (
+                        <span>{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </header>
 
-                <p>{post.description}</p>
-              </div>
+              <p>{post.data.description}</p>
+
+              <a class="read-more" href={`/blog/${post.slug}/`}>
+                ... read more
+              </a>
             </article>
-          ))}
-        </div>
+          ))
+        ) : (
+          <article class="post-card">
+            <header class="post-header">
+              <h2>Building My First AWS Linux Server</h2>
+
+              <div class="post-meta">
+                <span>07 Jun 2026</span>
+
+                <div class="tags">
+                  <span>aws</span>
+                  <span>linux</span>
+                  <span>cloud</span>
+                </div>
+              </div>
+            </header>
+
+            <p>
+              My notes from provisioning a Linux server on AWS, connecting with
+              SSH, configuring security groups, and deploying a landing page.
+            </p>
+
+            <a class="read-more" href="#">
+              ... read more
+            </a>
+          </article>
+        )}
       </section>
 
-      <section class="content-section">
-        <div class="section-heading">
-          <h2>Projects</h2>
-          <a href="/projects/">all projects</a>
-        </div>
+      <section class="projects-section" id="projects">
+        <h2>Projects</h2>
 
         <div class="project-list">
           {projects.map((project) => (
@@ -137,21 +163,9 @@ const projects = [
         </div>
       </section>
 
-      <section class="content-section">
-        <h2>What I write about</h2>
-
-        <ul class="topic-list">
-          <li>Linux server administration</li>
-          <li>AWS and cloud engineering projects</li>
-          <li>Bash scripting and automation</li>
-          <li>Docker, GitHub Actions, and CI/CD</li>
-          <li>Beginner-friendly DevOps notes</li>
-        </ul>
-      </section>
-
-      <footer class="site-footer">
+      <footer class="footer">
         <p>
-          © 2026 Kaybee.
+          © 2026 Kaybee ·
           <a href="/rss.xml">rss</a>
         </p>
       </footer>

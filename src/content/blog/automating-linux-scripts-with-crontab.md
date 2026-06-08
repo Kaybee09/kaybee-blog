@@ -4,11 +4,8 @@ title: "Automating Linux Scripts with Crontab"
 description: "A beginner-friendly explanation of how crontab helps automate Linux scripts and why scheduling tasks matters in cloud engineering."
 pubDate: 2025-06-07
 tags: ["Linux", "Crontab", "Bash", "Cloud Engineering", "Automation"]
-heroImage: "/Users/kb/git/kaybee-blog/public/images/crontab.jpeg"
 source: "Originally published on LinkedIn"
 ------------------------------------------
-
-![Crontab learning post screenshot](/images/crontab-linkedin-post.jpg)
 
 As I continue my cloud engineering journey at AltSchool Africa, I have been thinking more about automation.
 

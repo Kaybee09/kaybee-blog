@@ -291,17 +291,23 @@ code {
   padding: 2px 5px;
   border-radius: 4px;
   background: var(--tag-bg);
+  color: var(--text);
+  font-size: 0.95em;
 }
 
 pre {
   padding: 1.25rem;
   overflow-x: auto;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--tag-bg);
+  background: #f6f7f9;
+  color: #111827;
 }
 
 pre > code {
   padding: 0;
+  background: transparent;
+  color: inherit;
 }
 
 blockquote {

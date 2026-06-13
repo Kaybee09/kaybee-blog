@@ -324,3 +324,120 @@ ubuntu admin
 ```
 
 The exact values will depend on your machine, workload, storage, and active users.
+
+## Saving the Snapshot to a File
+
+You can save the report instead of printing it only on the screen.
+
+```bash
+./monitor_snapshot.sh > system_report.txt
+```
+
+The `>` symbol redirects the script's output into a file.
+
+To include the date and time in the filename, use:
+
+```bash
+./monitor_snapshot.sh > "system_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
+```
+
+This creates a file with a name similar to:
+
+```text
+system_report_2026-06-13_14-30-00.txt
+```
+
+This can be helpful when you want to keep several snapshots and compare them later.
+
+## Running It Automatically with Cron
+
+You can use `cron` to run the script automatically.
+
+Open your crontab:
+
+```bash
+crontab -e
+```
+
+To run the script once every hour, add:
+
+```cron
+0 * * * * /full/path/to/monitor_snapshot.sh >> /full/path/to/monitor_snapshot.log 2>&1
+```
+
+Replace the example paths with the actual location of your script and log file.
+
+The `>>` operator appends new output to the existing file instead of replacing it.
+
+The following part sends error messages to the same log file:
+
+```bash
+2>&1
+```
+
+Using absolute paths is important when working with cron because scheduled tasks may not use the same environment as your normal terminal session.
+
+## Ideas for Improving the Script
+
+This script is deliberately simple, but it gives you a solid foundation to build on.
+
+You could extend it by adding:
+
+- The number of CPU cores
+- CPU temperature
+- Network information
+- The number of running processes
+- Failed `systemd` services
+- Disk and memory warning thresholds
+- The most resource-intensive processes
+- Email, Slack, or Telegram alerts
+- JSON output for use with other applications
+- Timestamps for every report
+
+For example, you can display the five processes using the most memory:
+
+```bash
+ps aux --sort=-%mem | head -n 6
+```
+
+To display the processes using the most CPU:
+
+```bash
+ps aux --sort=-%cpu | head -n 6
+```
+
+To check for failed services on a system that uses `systemd`:
+
+```bash
+systemctl --failed
+```
+
+You could also add conditions that print a warning when disk or memory usage passes a certain percentage.
+
+## A Few Security Considerations
+
+The script only reads system information, but it is still worth following good security practices.
+
+Avoid running it as root unless elevated privileges are genuinely required. Also remember that generated reports may contain hostnames, usernames, and other information you may not want to expose publicly.
+
+You can limit who is allowed to execute the script with:
+
+```bash
+chmod 750 monitor_snapshot.sh
+```
+
+This gives the owner full access, allows members of the assigned group to read and execute the script, and blocks access for everyone else.
+
+You should also review every change carefully before using the script on a production server.
+
+## Final Thoughts
+
+This small project shows how useful Bash can be for Linux administration.
+
+By combining commands such as `hostname`, `whoami`, `uptime`, `who`, `free`, and `df`, we created a practical script that provides a quick snapshot of a Linux system's health.
+
+It may not be a complete monitoring solution, but it is useful for everyday checks, learning, troubleshooting, and automation.
+
+More importantly, it demonstrates an essential Linux skill: taking simple commands and combining them into a tool that saves time.
+
+As you become more comfortable with Bash, you can gradually add alerts, thresholds, structured logs, remote reporting, and automatic notifications. What begins as a small learning project can eventually become a useful part of your server-management toolkit.

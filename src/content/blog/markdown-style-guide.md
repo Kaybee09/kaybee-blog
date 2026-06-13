@@ -75,3 +75,125 @@ echo "$LOGGED_USERS"
 ```
 
 Now let us follow on how each part works.
+
+## Starting with the Shebang
+
+```bash
+#!/bin/bash
+```
+
+The first line tells Linux to run the script using the Bash shell.
+
+This line is called a **shebang**. Without it, the operating system may not know which interpreter should be used to execute the file.
+
+## Getting the Hostname
+
+```bash
+HOSTNAME=$(hostname)
+```
+
+The `hostname` command returns the name of the machine.
+
+The result is stored in a variable called `HOSTNAME`. This is especially useful when you run the same monitoring script on several servers because the report immediately tells you which machine you are checking.
+
+The `$()` syntax is called **command substitution**. Bash runs the command inside the brackets and stores its output in the variable.
+
+## Finding the Current User
+
+```bash
+CURRENT_USER=$(whoami)
+```
+
+The `whoami` command displays the username of the person or account running the script.
+
+This can help you confirm whether the script is being run by a normal user, an administrator, or the root account.
+
+## Checking the System Uptime
+
+```bash
+UPTIME_INFO=$(uptime -p)
+```
+
+The `uptime` command tells us how long the system has been running.
+
+The `-p` option makes the result easier to read. Instead of a long technical line, you may see something like:
+
+```text
+up 3 days, 5 hours, 20 minutes
+```
+
+Uptime is useful when investigating unexpected restarts. If a server was supposed to have been running for several weeks but the uptime shows only a few hours, it may have recently rebooted.
+
+## Reading the CPU Load Average
+
+```bash
+LOAD_AVG=$(uptime | awk -F'load average:' '{print $2}' | xargs)
+```
+
+This line looks more complicated because it combines several commands using pipes.
+
+First, `uptime` produces output similar to this:
+
+```text
+14:31:15 up 3 days, 2 users, load average: 0.10, 0.15, 0.12
+```
+
+The output is passed to `awk`, which separates the line at the words `load average:` and prints the second part.
+
+```bash
+awk -F'load average:' '{print $2}'
+```
+
+The result is then passed to `xargs`, which removes unnecessary spaces from the beginning and end.
+
+The three load-average values represent the average system load over the last:
+
+1. One minute
+2. Five minutes
+3. Fifteen minutes
+
+These values should be interpreted in relation to the number of CPU cores.
+
+For example, a load average of `4.00` may be normal for a busy four-core machine, but it could indicate a serious bottleneck on a single-core system.
+
+## Checking Logged-In Users
+
+```bash
+LOGGED_USERS=$(who | awk '{print $1}' | sort -u | xargs)
+```
+
+The `who` command lists users with active login sessions.
+
+Its output is passed through three additional commands:
+
+```bash
+awk '{print $1}'
+```
+
+This keeps only the username.
+
+```bash
+sort -u
+```
+
+This sorts the names and removes duplicates. A user may have several open sessions, but their name will appear only once.
+
+Finally, `xargs` places the usernames on one line.
+
+## Handling an Empty Result
+
+```bash
+if [[ -z "$LOGGED_USERS" ]]; then
+    LOGGED_USERS="No logged-in users found"
+fi
+```
+
+Sometimes the `who` command returns nothing because no interactive users are logged in.
+
+The `-z` test checks whether the variable is empty. If it is, the script replaces the empty value with a clear message:
+
+```text
+No logged-in users found
+```
+
+This is a small detail, but it makes the final report easier to understand.

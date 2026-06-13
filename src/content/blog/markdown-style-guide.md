@@ -197,3 +197,130 @@ No logged-in users found
 ```
 
 This is a small detail, but it makes the final report easier to understand.
+
+## Printing the Report
+
+The next section creates the report heading and displays the collected information.
+
+```bash
+echo "===================================="
+echo " Linux Monitor Agent - Snapshot"
+echo "===================================="
+echo "Hostname:        $HOSTNAME"
+echo "Current User:    $CURRENT_USER"
+echo "Uptime:          $UPTIME_INFO"
+echo "CPU Load Avg:    $LOAD_AVG"
+```
+
+The spacing after each label helps keep the output aligned.
+
+An empty `echo` command adds a blank line between sections:
+
+```bash
+echo
+```
+
+This makes the report more readable.
+
+## Displaying Memory Usage
+
+```bash
+free -h
+```
+
+The `free` command displays information about the machine's memory and swap space.
+
+The `-h` option means **human-readable**. It shows values using units such as megabytes and gigabytes instead of raw byte counts.
+
+A typical result may look like this:
+
+```text
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       4.2Gi       5.7Gi       310Mi       5.1Gi        10Gi
+Swap:          2.0Gi          0B       2.0Gi
+```
+
+When reading this output, the `available` column is often more useful than the `free` column.
+
+Linux uses unused memory for caching to improve performance. This means a low `free` value does not always indicate a problem.
+
+## Displaying Disk Usage
+
+```bash
+df -h --total | grep -E 'Filesystem|total'
+```
+
+The `df` command reports disk-space usage.
+
+The `-h` option displays values in a readable format, while `--total` adds a final line containing the combined total.
+
+The output is then filtered with:
+
+```bash
+grep -E 'Filesystem|total'
+```
+
+This keeps only the heading and the total line.
+
+The output may look like this:
+
+```text
+Filesystem      Size  Used Avail Use% Mounted on
+total            80G   29G   47G  39% -
+```
+
+This gives you a quick summary of overall disk usage.
+
+For a more detailed view of every mounted filesystem, you can run:
+
+```bash
+df -h
+```
+
+## Running the Script
+
+After saving the file, make it executable:
+
+```bash
+chmod +x monitor_snapshot.sh
+```
+
+Then run it:
+
+```bash
+./monitor_snapshot.sh
+```
+
+You can also run it directly with Bash:
+
+```bash
+bash monitor_snapshot.sh
+```
+
+## Example Output
+
+Your result may look similar to this:
+
+```text
+====================================
+ Linux Monitor Agent - Snapshot
+====================================
+Hostname:        web-server-01
+Current User:    ubuntu
+Uptime:          up 3 days, 5 hours, 12 minutes
+CPU Load Avg:    0.08, 0.12, 0.10
+
+RAM Usage:
+               total        used        free      shared  buff/cache   available
+Mem:            7.7Gi       2.1Gi       3.4Gi       100Mi       2.2Gi       5.1Gi
+Swap:           2.0Gi          0B       2.0Gi
+
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+total            80G   29G   47G  39% -
+
+Logged-in Users:
+ubuntu admin
+```
+
+The exact values will depend on your machine, workload, storage, and active users.

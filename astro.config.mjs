@@ -6,8 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://kaybee09.github.io',
-	base: "/kaybee-blog/",
+	site: 'https://kaybeelog.com',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{

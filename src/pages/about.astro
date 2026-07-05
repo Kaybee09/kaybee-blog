@@ -1,91 +1,91 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import Layout from "../layouts/PageLayout.astro";
+import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
 ---
-<section class="about">
-  <h1>About Me</h1>
 
-  <p>
-    Hi, I'm <strong>Kaybee</strong>, a technology professional based in Sweden with a passion for
-    <strong>Cloud Computing, DevOps, Embedded Systems, and IoT.</strong>
-  </p>
+<Layout
+  title="About Me"
+  description="Learn more about Kaybee."
+>
 
-  <p>
-    My career has been built around technology and solving problems for people. I started in
-    IT Support, helping users troubleshoot technical issues and maintain reliable IT services.
-    I later joined <strong>Booking.com</strong>, where I worked as a
-    <strong>Customer Support Specialist</strong> before transitioning into a
-    <strong>Development Support Specialist</strong>. In these roles, I collaborated closely with
-    customers, developers, and internal teams to resolve complex technical issues, improve user
-    experiences, and support software products used by millions of people worldwide.
-  </p>
+<img
+  src={AboutHeroImage.src}
+  alt="Kaybee"
+  class="article-image"
+/>
 
-  <p>
-    Today, I work as a <strong>Customer Operations Professional at IAR</strong>, a global leader in
-    embedded development software. Although my current role is not an engineering position, working
-    in an environment focused on embedded technologies has strengthened my interest in how software,
-    hardware, and cloud platforms work together to build reliable and intelligent systems.
-  </p>
+<h1>About Me</h1>
 
-  <p>
-    Alongside my professional career, I'm actively transitioning into Cloud and DevOps Engineering
-    through continuous learning and hands-on projects. I'm currently studying Cloud Engineering,
-    preparing for the Linux Foundation Certified System Administrator (LFCS) certification, and
-    building real-world projects using modern cloud technologies.
-  </p>
+<p>
+Hi, I'm <strong>Kaybee</strong>, a technology professional based in Sweden with a passion for Cloud Computing, DevOps, Embedded Systems, and IoT.
+</p>
 
-  <h2>What I'm Building</h2>
+<p>
+My professional journey has always revolved around technology and solving problems. I started my career in IT Support before joining Booking.com, where I worked as both a Customer Support Specialist and later a Development Support Specialist, collaborating with customers, developers, and internal engineering teams to resolve complex technical issues.
+</p>
 
-  <p>
-    My interests extend beyond traditional cloud infrastructure. I'm passionate about connecting
-    embedded devices to cloud platforms, automating deployments, and developing intelligent IoT
-    solutions capable of solving real-world problems.
-  </p>
+<p>
+Today, I work in Customer Operations at IAR, a global leader in embedded software development tools. Although my role is not an engineering position, working in this environment has strengthened my interest in embedded technologies and how they integrate with cloud platforms and modern software systems.
+</p>
 
-  <p>
-    One of my long-term goals is to build cloud-connected products that combine embedded systems,
-    edge computing, automation, and artificial intelligence to improve industries such as
-    agriculture, manufacturing, and industrial automation.
-  </p>
+<p>
+Alongside my professional career, I'm actively transitioning into Cloud and DevOps Engineering by building hands-on projects, studying Linux, AWS, Docker, Kubernetes, Terraform, and CI/CD pipelines while documenting everything I learn on this blog.
+</p>
 
-  <h2>Technologies I'm Learning</h2>
+<h2>What I'm Building</h2>
 
-  <ul>
-    <li>Linux System Administration</li>
-    <li>Amazon Web Services (AWS)</li>
-    <li>Docker & Containerization</li>
-    <li>Kubernetes</li>
-    <li>Git & GitHub</li>
-    <li>GitHub Actions (CI/CD)</li>
-    <li>Terraform (Infrastructure as Code)</li>
-    <li>Bash & Python Automation</li>
-    <li>Networking & Security</li>
-    <li>Embedded Systems</li>
-    <li>Internet of Things (IoT)</li>
-    <li>Edge Computing</li>
-  </ul>
+<p>
+I'm particularly interested in the intersection of Cloud Computing, Embedded Systems, and IoT. My long-term goal is to develop intelligent cloud-connected devices capable of solving real-world problems in agriculture, industrial automation, and smart infrastructure.
+</p>
 
-  <h2>Why This Blog Exists</h2>
+<h2>Technologies I'm Learning</h2>
 
-  <p>
-    This blog is my personal knowledge base and portfolio. I use it to document everything I learn,
-    build, and discover—from Linux commands and cloud infrastructure to DevOps automation,
-    embedded systems, and IoT projects.
-  </p>
+<ul>
 
-  <p>
-    Rather than only sharing finished projects, I also write about the challenges, mistakes, and
-    lessons learned throughout my journey. I believe the best way to learn technology is by building
-    in public and sharing knowledge with others.
-  </p>
+<li>Linux</li>
 
-  <blockquote>
-    "Technology is most impactful when software, hardware, and people work together to solve
-    meaningful problems."
-  </blockquote>
+<li>AWS</li>
 
-  <p>
-    Thank you for visiting my blog. Whether you're here to learn something new, follow my journey,
-    or connect professionally, I hope you find something valuable.
-  </p>
-</section>
+<li>Docker</li>
+
+<li>Kubernetes</li>
+
+<li>Terraform</li>
+
+<li>Git & GitHub</li>
+
+<li>GitHub Actions</li>
+
+<li>Python</li>
+
+<li>Bash</li>
+
+<li>Networking</li>
+
+<li>Embedded Systems</li>
+
+<li>IoT</li>
+
+<li>Edge Computing</li>
+
+</ul>
+
+<h2>Why This Blog Exists</h2>
+
+<p>
+This blog is my learning journal, technical portfolio, and a place where I document real-world projects, lessons learned, and experiments across Cloud, DevOps, Linux, Embedded Systems, and IoT.
+</p>
+
+<blockquote>
+
+Technology creates the greatest impact when software, hardware, cloud infrastructure, and people work together to solve meaningful problems.
+
+</blockquote>
+
+<p>
+
+Thanks for stopping by. I hope my journey inspires others who are transitioning into technology or building practical engineering skills.
+
+</p>
+
+</Layout>

@@ -1,3 +1,7 @@
+---
+import "../styles/global.css";
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,66 +9,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="About Kaybee" />
     <title>About Me | Kaybee Dev</title>
-    <style>
-      :root {
-        color-scheme: light dark;
-        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.6;
-      }
-      body {
-        margin: 0;
-        background: #0f172a;
-        color: #f8fafc;
-      }
-      main {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 3rem 1.25rem 4rem;
-      }
-      a {
-        color: #7dd3fc;
-      }
-      h1, h2 {
-        line-height: 1.2;
-      }
-      .card {
-        background: rgba(15, 23, 42, 0.75);
-        border: 1px solid rgba(148, 163, 184, 0.25);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 20px 60px rgba(2, 8, 23, 0.35);
-      }
-    </style>
+    <script defer src="/theme.js"></script>
   </head>
   <body>
-    <main>
-      <div class="card">
+    <main class="page">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+
+      <header class="hero">
+        <h2><a href="/">Kaybee Lateef</a></h2>
+
+        <p>Cloud engineering, Linux, AWS, DevOps, and real project notes.</p>
+      </header>
+
+      <hr />
+
+      <section class="nav-section">
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/">Blog</a>
+          <a href="/#projects">Projects</a>
+          <a href="/about/">About</a>
+          <a href="/resume/">Resume</a>
+        </nav>
+      </section>
+
+      <section class="about">
         <h1>About Me</h1>
         <p>
           Hi, I’m <strong>Kaybee</strong>, a technology professional based in Sweden with a passion for
-          <strong>Cloud Computing, DevOps, Embedded Systems, and IoT</strong>.
+          <strong>Cloud Computing, DevOps, Embedded Systems, and IoT.</strong>
         </p>
-
         <p>
-          I work across software, infrastructure, and automation, and I use this blog to document what I
-          learn while building practical projects in Linux, cloud, and DevOps.
+          My career has been built around technology and solving problems for people. I started in IT
+          Support, helping users troubleshoot technical issues and maintain reliable IT services. I later
+          joined <strong>Booking.com</strong>, where I worked as a
+          <strong>Customer Support Specialist</strong> before transitioning into a
+          <strong>Development Support Specialist</strong>. In these roles, I collaborated closely with
+          customers, developers, and internal teams to resolve complex technical issues, improve user
+          experiences, and support software products used by millions of people worldwide.
         </p>
-
-        <h2>What I’m working on</h2>
         <p>
-          My focus is on cloud engineering, Linux administration, automation, and building reliable systems
-          that solve real problems.
+          Today, I work as a <strong>Customer Operations Professional at IAR</strong>, a global leader in
+          embedded development software. Although my current role is not an engineering position, working
+          in an environment focused on embedded technologies has strengthened my interest in how software,
+          hardware, and cloud platforms work together to build reliable and intelligent systems.
         </p>
-
         <p>
-          I’m especially interested in AWS, infrastructure as code, CI/CD workflows, and connecting embedded
-          and IoT systems to modern cloud platforms.
+          Alongside my professional career, I’m actively transitioning into Cloud and DevOps Engineering
+          through continuous learning and hands-on projects. I’m currently studying Cloud Engineering,
+          preparing for the Linux Foundation Certified System Administrator (LFCS) certification, and
+          building real-world projects using modern cloud technologies.
         </p>
-
+        <h2>What I’m Building</h2>
         <p>
-          <a href="/">Back to the blog</a>
+          My interests extend beyond traditional cloud infrastructure. I’m passionate about connecting
+          embedded devices to cloud platforms, automating deployments, and developing intelligent IoT
+          solutions capable of solving real-world problems.
         </p>
-      </div>
+        <p>
+          One of my long-term goals is to build cloud-connected products that combine embedded systems,
+          edge computing, automation, and artificial intelligence to improve industries such as
+          agriculture, manufacturing, and industrial automation.
+        </p>
+        <h2>Technologies I’m Learning</h2>
+        <ul>
+          <li>Linux System Administration</li>
+          <li>Amazon Web Services (AWS)</li>
+          <li>Docker &amp; Containerization</li>
+          <li>Kubernetes</li>
+          <li>Git &amp; GitHub</li>
+          <li>GitHub Actions (CI/CD)</li>
+          <li>Terraform (Infrastructure as Code)</li>
+          <li>Bash &amp; Python Automation</li>
+          <li>Networking &amp; Security</li>
+          <li>Embedded Systems</li>
+          <li>Internet of Things (IoT)</li>
+          <li>Edge Computing</li>
+        </ul>
+        <h2>Why This Blog Exists</h2>
+        <p>
+          This blog is my personal knowledge base and portfolio. I use it to document everything I learn,
+          build, and discover—from Linux commands and cloud infrastructure to DevOps automation,
+          embedded systems, and IoT projects.
+        </p>
+        <p>
+          Rather than only sharing finished projects, I also write about the challenges, mistakes, and
+          lessons learned throughout my journey. I believe the best way to learn technology is by building
+          in public and sharing knowledge with others.
+        </p>
+        <blockquote>
+          “Technology is most impactful when software, hardware, and people work together to solve
+          meaningful problems.”
+        </blockquote>
+        <p>
+          Thank you for visiting my blog. Whether you’re here to learn something new, follow my journey,
+          or connect professionally, I hope you find something valuable.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <p>© 2024 - 2026 Kaybee · <a href="/rss.xml">rss</a></p>
+      </footer>
     </main>
   </body>
 </html>

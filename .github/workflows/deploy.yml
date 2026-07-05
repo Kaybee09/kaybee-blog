@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: npm
 
       - name: Verify Node Version
@@ -63,3 +63,4 @@ jobs:
         uses: actions/deploy-pages@v4
         env:
           ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+          GITHUB_PAGES_DEPLOYMENT_TIMEOUT: 1800000

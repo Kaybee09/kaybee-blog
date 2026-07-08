@@ -15,7 +15,7 @@ SSH is a secure network protocol used to remotely connect to servers, execute co
 
 Example:
 ```bash
-ssh username@server-ip
+ssh username@server-ip 
 ```
 
 ## SSH Configuration
@@ -33,7 +33,7 @@ MaxAuthTries 3
 ```
 Restart service:
 ```bash
-sudo systemctl restart sshd
+sudo systemctl reload sshd
 ```
 
 ## Hardening SSH
@@ -58,6 +58,7 @@ ss -tulpn | grep ssh
 
 ## What I Learned
 - Always test configuration with `sshd -t`.
+- Always use systemctl reload instead of systemctl restart to preserve active sessions.
 - Keep one SSH session open while testing another.
 - Security should never be an afterthought.
 

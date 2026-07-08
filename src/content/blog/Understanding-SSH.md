@@ -1,6 +1,6 @@
 ---
 title: 'Understanding SSH and Hardening SSH'
-description: 'My Learning Journey
+description: 'My Learning Journey'
 pubDate: 'Jul 08 2025'
 heroImage: '../../assets/blog-placeholder-3.jpg'
 ---

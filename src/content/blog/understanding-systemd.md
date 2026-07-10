@@ -83,7 +83,7 @@ systemctl status nginx
 
 ---
 
-## 🔄 Configuration Management & Logs
+##  Configuration Management & Logs
 
 ### Reloading the Daemon
 When you modify or create any unit file, you must force systemd to parse the changes.
@@ -99,7 +99,7 @@ journalctl -u nginx
 
 ---
 
-## ⚠️ Pitfalls Encountered & Resolved
+##  Pitfalls Encountered & Resolved
 
 ### Confusing "Enable" with "Start"
 * **The Mistake:** Expecting `enable` to execute the application immediately.
@@ -115,12 +115,12 @@ journalctl -u nginx
 
 ---
 
-## 💡 Key Takeaways
+##  Key Takeaways
 * **Validate first:** Double-check unit file paths before initiating restarts.
 * **Log-driven debugging:** Utilize `journalctl` first rather than guessing root causes.
 * **Map dependencies:** Respect unit file prerequisites to avoid initialization failures.
 
 ---
 
-## 🏁 Conclusion
+## Conclusion
 Mastering systemd is a fundamental requirement for Linux administration. Beyond simple service management, it dictates boot architecture, process sandboxing, and centralized logging metrics.

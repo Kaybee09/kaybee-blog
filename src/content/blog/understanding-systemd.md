@@ -6,14 +6,12 @@ tags: ["Linux", "systemd", "SysAdmin", "DevOps", "LFCS"]
 author: "Customer Operation Representative / Cloud Aspirant"
 ---
 
-# Understanding systemd, Linux Services, and systemctl: My Learning Experience
-
-## 📌 Introduction
+## Introduction
 Modern Linux systems rely heavily on **systemd** as the default init system. It manages processes after the Linux kernel boots. Learning systemd reveals how background operations, dependencies, and logging function in production environments.
 
 ---
 
-## 🛠️ What is systemd?
+##  What is systemd?
 The systemd framework initializes the user-space and acts as a central management system.
 
 ### Core Responsibilities
@@ -27,7 +25,7 @@ The systemd framework initializes the user-space and acts as a central managemen
 
 ---
 
-## ⚙️ What is a Service?
+##  What is a Service?
 A service is a persistent background process (daemon) running independently of user interaction.
 
 ### Common Examples
@@ -38,7 +36,7 @@ A service is a persistent background process (daemon) running independently of u
 
 ---
 
-## 📄 Service Unit Files
+##  Service Unit Files
 Systemd utilizes configuration files known as unit files to define how a service runs.
 
 ### Storage Locations
@@ -60,7 +58,7 @@ WantedBy=multi-user.target
 
 ---
 
-## 🕹️ Managing Services with systemctl
+## Managing Services with systemctl
 The `systemctl` utility serves as the primary operational tool for systemd administration.
 
 ```bash

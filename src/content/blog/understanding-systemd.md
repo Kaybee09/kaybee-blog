@@ -1,9 +1,8 @@
 ---
-title: "Understanding systemd, Linux Services, and systemctl: My Learning Experience"
+title: "Understanding systemd, Linux Services, and systemctl:"
 description: "A comprehensive guide analyzing systemd mechanics, service management via systemctl, practical unit file configurations, and troubleshooting insights learned during Linux administration studies."
-pubDate: 2026-07-09
+pubDate: 2025-02-09
 tags: ["Linux", "systemd", "SysAdmin", "DevOps", "LFCS"]
-author: "Customer Operation Representative / Cloud Aspirant"
 ---
 
 ## Introduction

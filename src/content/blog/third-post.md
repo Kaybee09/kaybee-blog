@@ -1,6 +1,6 @@
 ---
-title: 'Third post'
-description: 'Lorem ipsum dolor sit amet'
+title: 'The Linux LVM Finally Made Sense'
+description: 'Demystifying Linux storage management layers through mistakes, breakthroughs, and virtual machines.'
 pubDate: 'Jan 22 2025'
 ---
 
